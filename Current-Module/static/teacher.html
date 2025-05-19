@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title> Teacher </title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="resources/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="resources/fontawesome/css/all.css">
+
+
+    <style>
+
+        .table-container {
+            width: auto;
+            overflow-x: scroll !important;
+        }
+
+        .tooltip-inner {
+            background-color: #38040EFF;
+        }
+
+    </style>
+
+    <script defer src="resources/fontawesome/js/solid.js"></script>
+    <script defer src="resources/fontawesome/js/fontawesome.js"></script>
+
+
+    <script src="resources/jquery/jquery-3.4.1.min.js"></script>
+    <script src="resources/jquery/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="resources/jquery/popper.min.js"></script>
+    <script src="resources/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <script src="resources/script/common.bitproject.js"></script>
+    <script src="resources/script/innertablefunctions.js"></script>
+    <script src="resources/script/mainWindow.js"></script>
+    <script src="teacher.js"></script>
+
+    <link rel="stylesheet" href="resources/style/home.css">
+    <link rel="stylesheet" href="resources/style/common.css">
+    <link rel="stylesheet" href="resources/style/style3.css">
+    <script src="resources/script/sweetalert.min.js"></script>
+
+</head>
+<body>
+
+<div class="wrapper">
+    <!-- Sidebar  -->
+    <nav id="sidebar" style="background-color: #461220">
+        <div id="dismiss">
+            <i class="fas fa-arrow-left"></i>
+        </div>
+
+        <div class="sidebar-header text-center" style="background-color: #461220">
+            <div style="align-content: center">
+                <img id="profileImage" class="profileImage">
+            </div>
+            <div style="margin-top: 10px">
+                <p class="loggedUserNameField d-inline mt-2" id="lblLogUser">123456</p>
+            </div>
+        </div>
+
+        <ul class="list-unstyled components" >
+            <li>
+                <a href="http://localhost:8080/mainwindow">
+                    <i class="fas fa-home"></i>
+                    Dashboard
+                </a>
+            </li>
+
+            <li>
+                <a href="#privilagemenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                    <i class="fas fa-key">  </i>
+                    User & privileges
+                </a>
+                <ul class="collapse list-unstyled" id="privilagemenu">
+                    <li class="EMPLOYEE">
+                        <a href="http://localhost:8080/employee">Employee</a>
+                    </li>
+                    <li class="USER">
+                        <a href="http://localhost:8080/user">User</a>
+                    </li>
+                    <li class="PRIVILAGE">
+                        <a href="http://localhost:8080/privilage">privilage</a>
+                    </li>
+                </ul>
+            </li>
+
+            <li>
+                <a href="#administmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                    <i class="fas fa-briefcase"></i>
+                    Administration
+                </a>
+                <ul class="collapse list-unstyled" id="administmenu">
+                    <li class="ACADAMICYEAR">
+                        <a href="http://localhost:8080/acadamicyear">Acadamic Year</a>
+                    </li>
+                    <li class="TEACHER">
+                        <a href="http://localhost:8080/teacher">Teacher</a>
+                    </li>
+                    <li class="CLASSROOM">
+                        <a href="http://localhost:8080/classroom">Classroom</a>
+                    </li>
+                </ul>
+            </li>
+
+            <li>
+                <a href="#studentmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                    <i class="fas fa-user-tie"></i>
+                    Student
+                </a>
+                <ul class="collapse list-unstyled" id="studentmenu">
+                    <li class="GUARDIAN">
+                        <a href="http://localhost:8080/guardian"> Guardian </a>
+                    </li>
+                    <li class="STUDENT">
+                        <a href="http://localhost:8080/student"> Student </a>
+                    </li>
+                    <li class="STUDENTREGISTRATION">
+                        <a href="http://localhost:8080/studentregistration"> Student Registration </a>
+                    </li>
+                    <li class="STUDENTPAYMENT">
+                        <a href="http://localhost:8080/studentpayment"> Student Payment </a>
+                    </li>
+                </ul>
+            </li>
+
+            <li>
+                <a href="#eventmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                    <i class="fas fa-calendar-day"></i>
+                    Events & Exams
+                </a>
+                <ul class="collapse list-unstyled" id="eventmenu">
+                    <li class="EVENTDETAIL">
+                        <a href="http://localhost:8080/eventdetail"> Events </a>
+                    </li>
+                    <li class="EXAM">
+                        <a href="http://localhost:8080/exam"> Exams </a>
+                    </li>
+                    <li class="SCHOLARSHIPAPPLICATION">
+                        <a href="http://localhost:8080/scholarshipapplication"> Scholarship Applocation </a>
+                    </li>
+                    <li class="EXAMRESULT">
+                        <a href="http://localhost:8080/examresult"> Results </a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="#seventmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                    <i class="fas fa-school"></i>
+                    Classroom
+                </a>
+                <ul class="collapse list-unstyled" id="seventmenu">
+                    <li class="ATTENDANCE">
+                        <a href="http://localhost:8080/schoolday"> Attendance </a>
+                    </li>
+                    <li class="EXAMRESULT">
+                        <a href="http://localhost:8080/examresult"> Results </a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Page Content  -->
+    <div id="content">
+
+        <nav class="navbar navbar-expand-lg navbar-dark " style="background-color: #461220; height: 80px ">
+            <div class="container-fluid">
+                <div class="float-left">
+                    <button type="button" id="sidebarCollapse" class="btn btn-outline-light btn-lg ml-4 sidebutton">
+                        <i class="fas fa-bars"></i>
+                        <span></span>
+                    </button>
+                    <button type="button" class="btn btn-lg ml-2 rounded-circle">
+                        <a href="http://localhost:8080/mainwindow">
+                            <img src="resources/image/mbkvlogo.png" height="60" width="60">
+                        </a>
+                        <span></span>
+                    </button>
+                </div>
+                <div>
+                    <h2 class="text-white font-weight-bold"> Madduma Bandara Kanishta Vidyalaya </h2>
+                </div>
+                <div class="row" >
+                    <p class="font-weight-bold text-white" style="margin-top: 20px; margin-right: -40px"> Loged as :
+                        <span id="spnDesignation"> </span>
+                    </p>
+
+                    <form class="form-inline my-2 my-lg-0 " >
+                        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                            <ul class="navbar-nav">
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link" style="width: 160px; text-align: center;" href="#" id="navbarDropdownMenuLink"
+                                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <i class="fas fa-power-off" style="width: 20px; height: 20px; align-content: center"></i>
+                                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" id="logoutlink" style="background-color: #ffffff;">
+                                            <a class="dropdown-item" href="#">
+                                                <i class="far fa-sliders-v"></i> View Profile
+                                            </a>
+                                            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#settingsModal">
+                                                <i class="far fa-sliders-v"></i> Change Password
+                                            </a>
+                                            <a class="dropdown-item" href="#" onclick="btnSignoutMC()">
+                                                <i class="fas fa-power-off"></i> Sign Out
+                                            </a>
+                                        </div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </nav>
+
+        <!-- Teacher -->
+        <div class="container-fluid dashbordbody p-0" >
+
+            <div class="row" id="ui">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header text-center cardhead">
+                            <h4> Teacher Details Management</h4>
+                        </div>
+
+                        <div class="card-body cardbody">
+
+                            <ul class="nav nav-tabs">
+                                <li class="nav-item" onclick="changeTab('form')">
+                                    <a class="nav-link active" id="tbForm" href="#" style="background-color: #b23a48; color: white; font-weight: bold; border-radius: 10px 10px 0px 0px">
+                                        Teacher Details Form</a>
+                                </li>
+                                <li class="nav-item" onclick="changeTab('table')">
+                                    <a class="nav-link active" id="tbTable" href="#" style="background-color: #b23a48; color: white; font-weight: bold; border-radius: 10px 10px 0px 0px">
+                                        Teacher Details Table</a>
+                                </li>
+                            </ul>
+
+                            <div class="row"  id="divFrom">
+                                <div class="col-md-12">
+                                    <form class="" id="teacherform" onsubmit="return false">
+
+                                        <div class="row" >
+                                            <div class="col-md-12 pull-right text-right">
+                                                <p style="color: #38040EFF; font-size: 15px; font-weight: bold;">
+                                                    <span style="color:red;">*</span> Required Fields</p>
+                                            </div>
+                                        </div>
+                    <!-- form form start -->
+
+                        <!--Name/first appointment date/duty asign date/ grade -->
+                                        <div class="row">
+
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label class="font-weight-bold" for="cmbTeacher"> Teacher :
+                                                        <span style="color:red;">*</span>
+                                                    </label>
+                                                    <select id="cmbTeacher" class="form-control" required
+                                                            onchange="comboBoxBinder(cmbTeacher,'','teacher','teacher_id','oldteacher')">
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label class="font-weight-bold" for="dteDutyAssign"> Duty Assign Date :
+                                                        <span style="color:red;">*</span>
+                                                    </label>
+                                                    <input type="date" id="dteDutyAssign" class="form-control" required
+                                                           onchange="textFieldBinder(dteDutyAssign,'','teacher','deutyassigndate','oldteacher')"
+                                                    />
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label class="font-weight-bold" for="dteAppoinment">First Appoinment Date :
+                                                        <span style="color:red;">*</span>
+                                                    </label>
+                                                    <input type="date" id="dteAppoinment" class="form-control" required
+                                                           onchange="textFieldBinder(dteAppoinment,'','teacher','appointmentdate','oldteacher')"
+                                                    />
+                                                </div>
+                                            </div>
+
+
+
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label class="font-weight-bold" for="cmbTeacherGrade"> Teacher's Grade :
+                                                        <span style="color:red;">*</span>
+                                                    </label>
+                                                    <select id="cmbTeacherGrade" class="form-control" required
+                                                            onchange="comboBoxBinder(cmbTeacherGrade,'','teacher','teachergrade_id','oldteacher')">
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                        <!--previous schools /description -->
+                                        <div class="row">
+
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="font-weight-bold" for="txtPreviousSchool"> Previous Schools :
+                                                    </label>
+                                                    <textarea id="txtPreviousSchool" class="form-control"
+                                                              placeholder="Enter Previous school Names Here" rows="2"
+                                                              data-toggle="tooltip" data-placement="bottom" title="Sri Bodhi Primary Vidyalaya"
+                                                              onkeyup="textFieldBinder(txtPreviousSchool,'^.*$','teacher','previousschool','oldteacher')">
+                                                    </textarea>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="col-md-4 font-weight-bold" for="txtDescription"> Description :
+                                                    </label>
+                                                    <textarea id="txtDescription" class="form-control"
+                                                              placeholder="Enter Description Here" rows="2"
+                                                              data-toggle="tooltip" data-placement="bottom" title="Enter Description Here"
+                                                              onkeyup="textFieldBinder(txtDescription,'^.*$','teacher','description','oldteacher')">
+                                                    </textarea>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                        <!--status/adeedby/added date-->
+                                        <div class="row">
+
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label class="font-weight-bold" for="cmbTeacherstatus"> Teacher Status :
+                                                        <span style="color:red;">*</span>
+                                                    </label>
+                                                    <select id="cmbTeacherstatus" class="form-control" required
+                                                            onchange="comboBoxBinder(cmbTeacherstatus,'','teacher','teacherstatus_id','oldteacher')">
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label class="font-weight-bold" for="dteAddedDate"> Added Date :
+                                                        <span style="color:red;">*</span>
+                                                    </label>
+                                                    <input type="date" id="dteAddedDate" class="form-control" required
+                                                           onkeyup="textFieldBinder(dteAddedDate,'','acayear','addeddate','oldguardian')"
+                                                    />
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label class="font-weight-bold" for="cmbAddedBy">Added By :
+                                                        <span style="color: red;">*</span>
+                                                    </label>
+                                                    <select id="cmbAddedBy" class="form-control" required
+                                                            onchange="comboBoxBinder(cmbAddedBy,'','acayear','employee_id','oldguardian')">
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                        <div class="row">
+
+                    <!--Inne form qualification -->
+                                            <div class="col-md-6 mt-2">
+                                                <div class="card" style="border: 2px solid #2f4550; border-radius: 5px;">
+                                                    <div class="card-header text-center cardheadinner" style="text-align: center;" >
+                                                        <h4 style="margin-top: -7px"> Qualification Details </h4>
+                                                    </div>
+
+                                                    <div class="card-body">
+
+                                            <!--qualification name / year -->
+                                                        <div class="row">
+
+                                                            <div class="col-md-8">
+                                                                <div class="form-group">
+                                                                    <label class="font-weight-bold" for="txtEQName"> Qualification Name :
+                                                                        <span style="color:red;">*</span>
+                                                                    </label>
+                                                                    <input type="text" id="txtEQName" class="form-control" required
+                                                                       placeholder="Enter Qulification Name Here" rows="2"
+                                                                       data-toggle="tooltip" data-placement="bottom" title="Bachelor's Degree"
+                                                                       onkeyup="textFieldBinder(txtEQName,'^.*$','qualification','name','oldqualification')"
+                                                                    />
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="col-md-4">
+                                                                <div class="form-group">
+                                                                    <label class="font-weight-bold"
+                                                                           for="txtYear"> Year :
+                                                                        <span style="color:red;">*</span>
+                                                                    </label>
+                                                                    <input type="text"
+                                                                           placeholder="Enter Year Here" id="txtYear" class="form-control" required
+                                                                           data-toggle="tooltip" data-placement="bottom" title="2004"
+                                                                           onkeyup="textFieldBinder(txtYear,'^(19|20)\\d{2}$','qualification','year','oldqualification')"/>
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+
+                                            <!--institute /  efective date-->
+                                                        <div class="row">
+
+                                                            <div class="col-md-8">
+                                                                <div class="form-group">
+                                                                    <label class="font-weight-bold" for="txtInstitute"> Institute :
+                                                                        <span style="color:red;">*</span>
+                                                                    </label>
+                                                                    <input type="text" id="txtInstitute" class="form-control" required
+                                                                           placeholder="Enter Institute Here"
+                                                                           data-toggle="tooltip" data-placement="bottom" title="University of Colombo"
+                                                                           onkeyup="textFieldBinder(txtInstitute,'^.*$','qualification','institute','oldqualification')"/>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="col-md-4">
+                                                                <div class="form-group">
+                                                                    <label class="font-weight-bold" for="dteEffective"> Effeective Date :
+                                                                        <span style="color:red;">*</span>
+                                                                    </label>
+                                                                    <input type="date" id="dteEffective" class="form-control" required
+                                                                           onchange="textFieldBinder(dteEffective,'','qualification','effectivedate','oldqualification'), enableQualificationAddBTN();"/>
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+
+                                        <!--inner form buttons-->
+                                                        <div class="text-right mt-3 mb-2 mr-2">
+                                                            <button class="btn btn-primary " type="button" id="btnInnerClear" style="width: 20%" onclick="btnInnerQUalificationClearMc()" >
+                                                                Clear
+                                                            </button>
+                                                            <button class="btn btn-success" style="width: 20%" type="button" id="btnInnerAdd" onclick="btnInnerQUalificationAddMC()">
+                                                                Add
+                                                            </button>
+                                                        </div>
+
+                                                        <!--inner table -->
+                                                        <div class="row mt-3" id="innerTable1">
+                                                            <script>
+                                                                var metedatainner = [
+                                                                    {name: 'Qualification Name', search: true, datatype: 'text', property: 'name'},
+                                                                ];
+
+                                                                tableForInnerForm("innerTable1", "tblInnerQualification" , metedatainner , true);
+                                                            </script>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+
+                    <!--Inne form subject details -->
+                                            <div class="col-md-6 mt-2">
+                                                <div class="card" style="border: 2px solid #2f4550; border-radius: 5px;">
+                                                    <div class="card-header text-center cardheadinner" style="text-align: center;">
+                                                        <h4 style="margin-top: -7px"> Teaching Subject Details </h4>
+                                                    </div>
+
+                                                    <div class="card-body">
+
+                                            <!--stream / subject-->
+                                                        <div class="row">
+
+                                                            <div class="col-md-6">
+                                                                <div class="form-group">
+                                                                    <label class="font-weight-bold" for="cmbStream"> Stream :
+                                                                        <span style="color:red;">*</span>
+                                                                    </label>
+                                                                    <select id="cmbStream" class="form-control" required
+                                                                            onchange="comboBoxBinder(cmbStream,'','subject','stream_id','oldsubject')">
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="col-md-6">
+                                                                <div class="form-group">
+                                                                    <label class="font-weight-bold" for="cmbSubject"> Subject :
+                                                                        <span style="color:red;">*</span>
+                                                                    </label>
+                                                                    <select id="cmbSubject" class="form-control" required
+                                                                            onchange="comboBoxBinder(cmbSubject,'','subject','subjectdetail_id','oldsubject'), enableSubjectAddBTN()">
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+
+                                            <!--inner form buttons-->
+                                                        <div class="text-right mt-3 mb-2 mr-2">
+                                                            <button class="btn btn-primary " type="button" id="btnInnerClear2" style="width: 20%" onclick="btnInnerQSubjectClearMc();">
+                                                                Clear
+                                                            </button>
+
+                                                            <button class="btn btn-success" style="width: 20%" type="button" id="btnInnerAdd2" onclick="btnInnerSubjectAddMC();">
+                                                                Add
+                                                            </button>
+                                                        </div>
+
+                                                        <div class="col-md-12">
+                                                            <div class="row mt-3" id="innerTable2">
+                                                                <script>
+                                                                    var metedatainner = [
+                                                                        {name: 'Subject Name', search: true, datatype: 'text', property: 'subjectdetail_id.name'},
+                                                                    ];
+
+                                                                    tableForInnerForm("innerTable2", "tblInnerSubject" , metedatainner , true);
+                                                                </script>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+                                        <!-- form end -->
+
+
+                                        <!--form buttons-->
+                                        <div class="text-right mt-3">
+                                            <button class="btn btn-primary" type="button" id="btnClear" style="width: 15%">
+                                                Clear Form
+                                            </button>
+                                            <button class="btn btn-warning" type="submit" id="btnUpdate" style="width: 15%">
+                                                Update Form
+                                            </button>
+                                            <button class="btn btn-success" style="width: 15%" type="submit" id="btnAdd">
+                                                Add Teacher
+                                            </button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+
+                            <div class="row p-3 formcontent" id="divTable">
+                                <!--print and search -->
+                                <div class="container-fluid mt-2">
+                                    <input type="button" class="btn tblbtnprint font-weight-bold" value="Print Table"
+                                           id="btnPrintTable" onclick="btnPrintTableMC()"/>
+
+                                    <div class="float-right">
+                                        <input placeholder="Search" class="form-control" type="text"
+                                               id="txtSearchName"/>
+                                    </div>
+
+                                </div>
+
+
+                                <hr/>
+                                <!--teacher table -->
+                                <div class="table-responsive" id="tableParent" class="table-container ml-2">
+
+                                    <script>
+
+                                        function getNameColumn(ob) {
+                                            return ob.callingname + "(" + ob.number + ")";
+                                        }
+
+                                        var metadata = [
+                                            {name: 'Name', search: false, datatype: 'text', property: 'teacher_id.callingname'},
+                                            {name: 'Duty asign Date', search: false, datatype: 'text', property: 'deutyassigndate'},
+                                            {name: 'Status', search: false, datatype: 'text', property: 'teacherstatus_id.name'}
+                                        ];
+
+                                        //table function
+                                        table("tableParent", "tblTeacher", metadata, true);
+
+                                    </script>
+
+
+                                </div>
+
+                                <div>
+                                    <div style="display: inline-block ; float: left">
+                                        <select class="form-control input" id="cmbPageSize"
+                                                style="width: 80px;">
+                                            <option selected value="10">10</option>
+                                            <option value="15">15</option>
+                                            <option value="30">30</option>
+                                            <option value="500">500</option>
+                                            <option value="1000">1000</option>
+                                        </select>
+                                        <script>
+                                            cmbPageSize.onchange = function chnagePageSize() {
+                                                activepage = 1;
+                                                btnSearchMC();
+                                            };
+                                        </script>
+                                    </div>
+                                    <div style="display: inline-block; margin-left: 10px;">
+                                        <ul id="pagination" class="pagination"></ul>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+
+                        <div class="card-footer">
+                            <div id="err">
+                                <h3>Error Log</h3>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- Modal view guardian -->
+<div class="modal fade" id="TeacherVieweModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header" style="background: #800E13FF; color: white">
+                <div class="row text-center">
+                    <h4 class="modal-title ml-3" id="exampleModalLabel">Teacher details</h4>
+                </div>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true" style="color: white">
+                        <i class="fas fa-times"></i>
+                    </span>
+                </button>
+            </div>
+            <div class="modal-body" >
+                <table id="printformtable" class="table table-striped  table-sm">
+                    <tbody>
+                    <tr>
+                        <td class="text-right">Teacher name :</td>
+                        <td id="tdTeacher" class="text-left"></td>
+                    </tr>
+                    <tr>
+                        <td class="text-right">First appointment date :</td>
+                        <td id="tdAppoinment" class="text-left"></td>
+                    </tr>
+                    <tr>
+                        <td class="text-right">Duty assign date :</td>
+                        <td id="tdDutyAssign" class="text-left"></td>
+                    </tr>
+                    <tr>
+                        <td class="text-right">Teacher's grade :</td>
+                        <td id="tdTeacherGrade" class="text-left"></td>
+                    </tr>
+                    <tr>
+                        <td class="text-right">Previous school :</td>
+                        <td id="tdPreviousSchool" class="text-left"></td>
+                    </tr>
+                    <tr>
+                        <td class="text-right">Description :</td>
+                        <td id="tdDescription" class="text-left"></td>
+                    </tr>
+                    <tr>
+                        <td class="text-right">Teacher Status :</td>
+                        <td id="tdTeacherstatus" class="text-left"></td>
+                    </tr>
+                    <tr>
+                        <td class="text-right">Added date :</td>
+                        <td id="tdAddedDate" class="text-left"></td>
+                    </tr>
+                    <tr>
+                        <td class="text-right">Added By :</td>
+                        <td id="tdTeacherAddedby" class="text-left"></td>
+                    </tr>
+                    <tr>
+                        <td id="printinnerTable1" colspan="2" >
+                            <script>
+                                var metedatainner = [
+                                    {name: 'Qualification Name', search: true, datatype: 'text', property: 'name'},
+                                ];
+
+                                tableForInnerForm("printinnerTable1", "tblInnerPrintQualification" , metedatainner , false);
+                            </script>
+                        </td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td id="printinnerTable2" colspan="2" >
+                            <script>
+                                var metedatainner = [
+                                    {name: 'Subject Name', search: true, datatype: 'text', property: 'subjectdetail_id.name'},
+                                ];
+
+                                tableForInnerForm("printinnerTable2", "tblInnerPrintSubject" , metedatainner , false);
+                            </script>
+                        </td>
+                    </tr>
+
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" onclick="btnPrintRowMC()" >Print</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="overlay"></div>
+
+<!-- Settings Modal-->
+<div class="modal fade" id="settingsModal" tabindex="-1" role="dialog"
+     aria-labelledby="settingsModal" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+        <div class="modal-content" id="modalContent">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalTitle"><i
+                        class="fas fa-cog"></i> Settings</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+                <form id="changePasswordForm" onsubmit="return false">
+                    <div class="form-row">
+                        <!-- Username -->
+                        <div class="form-group col-md-12">
+                            <label for="txtUsernameView" class="text-blue">
+                                <b>Username</b>
+                            </label>
+                            <div readonly class="form-control-plaintext"
+                                 id="txtUsernameView"></div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <!-- Current Password -->
+                        <div class="form-group col-md-12">
+                            <label for="txtCurrentPassword"
+                                   class="text-blue"><b>Current Password</b> <i
+                                    class="fas fa-question-circle text-primary ml-1"
+                                    data-toggle="tooltip" data-placement="right"
+                                    title=""></i></label>
+                            <input type="password"
+                                   class="form-control form-control-sm changePasswordFields"
+                                   id="txtCurrentPassword"
+                                   onkeyup="textFieldBinder(txtCurrentPassword, '^[0-9]{5,}$', 'changePassword', 'currentPassword', 'oldChangePassword')">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <!-- New Password -->
+                        <div class="form-group col-md-12">
+                            <label for="txtNewPassword" class="text-blue"><b>New
+                                Password</b><i
+                                    class="fas fa-question-circle text-primary ml-1"
+                                    data-toggle="tooltip" data-placement="right"
+                                    title=""></i></label>
+                            <input type="password"
+                                   class="form-control form-control-sm changePasswordFields"
+                                   id="txtNewPassword"
+                                   onkeyup="passwordFieldBinder(txtNewPassword, txtConfirmPassword, '^[0-9]{5,}$', 'changePassword', '', 'oldChangePassword')">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <!-- Confirm Password -->
+                        <div class="form-group col-md-12">
+                            <label for="txtConfirmPassword"
+                                   class="text-blue"><b>Confirm
+                                Password</b><i
+                                    class="fas fa-question-circle text-primary ml-1"
+                                    data-toggle="tooltip" data-placement="right"
+                                    title=""></i></label>
+                            <input type="password"
+                                   class="form-control form-control-sm changePasswordFields"
+                                   id="txtConfirmPassword"
+                                   onkeyup="passwordFieldBinder(txtNewPassword, txtConfirmPassword, '^[0-9]{5,}$', 'changePassword', 'newPassword', 'oldChangePassword')">
+                        </div>
+                    </div>
+                </form>
+
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="brnClosechnagepasswordmodle" class="btn btn-secondary" data-dismiss="modal">
+                    Close
+                </button>
+                <button type="button" class="btn btn-primary"
+                        onclick="btnSaveChangePasswordMC()">Save changes
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
+

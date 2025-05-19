@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title> Report Payment </title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="resources/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="resources/fontawesome/css/all.css">
+
+    <style>
+
+        .table-container {
+            width: auto;
+            overflow-x: scroll !important;
+        }
+
+        .tooltip-inner {
+            background-color: #38040EFF;
+        }
+
+        .select2-selection{
+            width: 596px !important;
+            height: 38px !important;
+            padding-top: 4px;
+        }
+        .select2-selection__arrow{
+            margin-top: 6px !important;
+            margin-left: 10px !important;
+        }
+
+        .select2-selection__rendered{
+            padding-right: 5px !important;
+        }
+
+
+    </style>
+
+    <script defer src="resources/fontawesome/js/solid.js"></script>
+    <script defer src="resources/fontawesome/js/fontawesome.js"></script>
+
+    <script src="resources/jquery/jquery-3.4.1.min.js"></script>
+    <script src="resources/jquery/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="resources/jquery/popper.min.js"></script>
+    <script src="resources/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!--type and search-->
+    <link href="resources/select2/css/select2.min.css" rel="stylesheet" />
+    <script src="resources/select2/js/select2.min.js"></script>
+
+    <script src="resources/script/common.bitproject.js"></script>
+    <script src="resources/script/mainWindow.js"></script>
+
+    <!--chart-->
+    <script src="resources/chart/Chart.js"></script>
+
+    <link rel="stylesheet" href="resources/style/home.css">
+    <link rel="stylesheet" href="resources/style/common.css">
+    <link rel="stylesheet" href="resources/style/style3.css">
+    <script src="resources/script/sweetalert.min.js"></script>
+
+
+
+</head>
+<body>
+
+<div class="wrapper">
+
+    <!-- Sidebar  -->
+    <nav id="sidebar" style="background-color: #461220">
+        <div id="dismiss">
+            <i class="fas fa-arrow-left"></i>
+        </div>
+
+        <div class="sidebar-header text-center" style="background-color: #461220">
+            <div style="align-content: center">
+                <img id="profileImage" class="profileImage">
+            </div>
+            <div style="margin-top: 10px">
+                <p class="loggedUserNameField d-inline mt-2" id="lblLogUser">123456</p>
+            </div>
+        </div>
+
+        <ul class="list-unstyled components" >
+            <li>
+                <a href="http://localhost:8080/mainwindow">
+                    <i class="fas fa-home"></i>
+                    Dashboard
+                </a>
+            </li>
+
+            <li>
+                <a href="#privilagemenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                    <i class="fas fa-key">  </i>
+                    User & privileges
+                </a>
+                <ul class="collapse list-unstyled" id="privilagemenu">
+                    <li class="EMPLOYEE">
+                        <a href="http://localhost:8080/employee">Employee</a>
+                    </li>
+                    <li class="USER">
+                        <a href="http://localhost:8080/user">User</a>
+                    </li>
+                    <li class="PRIVILAGE">
+                        <a href="http://localhost:8080/privilage">privilage</a>
+                    </li>
+                </ul>
+            </li>
+
+            <li>
+                <a href="#administmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                    <i class="fas fa-briefcase"></i>
+                    Administration
+                </a>
+                <ul class="collapse list-unstyled" id="administmenu">
+                    <li class="ACADAMICYEAR">
+                        <a href="http://localhost:8080/acadamicyear">Acadamic Year</a>
+                    </li>
+                    <li class="TEACHER">
+                        <a href="http://localhost:8080/teacher">Teacher</a>
+                    </li>
+                    <li class="CLASSROOM">
+                        <a href="http://localhost:8080/classroom">Classroom</a>
+                    </li>
+                </ul>
+            </li>
+
+            <li>
+                <a href="#studentmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                    <i class="fas fa-user-tie"></i>
+                    Student
+                </a>
+                <ul class="collapse list-unstyled" id="studentmenu">
+                    <li class="GUARDIAN">
+                        <a href="http://localhost:8080/guardian"> Guardian </a>
+                    </li>
+                    <li class="STUDENT">
+                        <a href="http://localhost:8080/student"> Student </a>
+                    </li>
+                    <li class="STUDENTREGISTRATION">
+                        <a href="http://localhost:8080/studentregistration"> Student Registration </a>
+                    </li>
+                    <li class="STUDENTPAYMENT">
+                        <a href="http://localhost:8080/studentpayment"> Student Payment </a>
+                    </li>
+                </ul>
+            </li>
+
+            <li>
+                <a href="#eventmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                    <i class="fas fa-calendar-day"></i>
+                    Events & Exams
+                </a>
+                <ul class="collapse list-unstyled" id="eventmenu">
+                    <li class="EVENTDETAIL">
+                        <a href="http://localhost:8080/eventdetail"> Events </a>
+                    </li>
+                    <li class="EXAM">
+                        <a href="http://localhost:8080/exam"> Exams </a>
+                    </li>
+                    <li class="SCHOLARSHIPAPPLICATION">
+                        <a href="http://localhost:8080/scholarshipapplication"> Scholarship Applocation </a>
+                    </li>
+                    <li class="EXAMRESULT">
+                        <a href="http://localhost:8080/examresult"> Results </a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="#seventmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                    <i class="fas fa-school"></i>
+                    Classroom
+                </a>
+                <ul class="collapse list-unstyled" id="seventmenu">
+                    <li class="ATTENDANCE">
+                        <a href="http://localhost:8080/schoolday"> Attendance </a>
+                    </li>
+                    <li class="EXAMRESULT">
+                        <a href="http://localhost:8080/examresult"> Results </a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Page Content  -->
+    <div id="content">
+
+        <!--navigation bar -->
+        <nav class="navbar navbar-expand-lg navbar-dark " style="background-color: #461220; height: 80px ">
+            <div class="container-fluid">
+                <div class="float-left">
+                    <button type="button" id="sidebarCollapse" class="btn btn-outline-light btn-lg ml-4 sidebutton">
+                        <i class="fas fa-bars"></i>
+                        <span></span>
+                    </button>
+                    <button type="button" class="btn btn-lg ml-2 rounded-circle">
+                        <a href="http://localhost:8080/mainwindow">
+                            <img src="resources/image/mbkvlogo.png" height="60" width="60">
+                        </a>
+                        <span></span>
+                    </button>
+                </div>
+                <div>
+                    <h2 class="text-white font-weight-bold"> Madduma Bandara Kanishta Vidyalaya </h2>
+                </div>
+                <div class="row" >
+                    <p class="font-weight-bold text-white" style="margin-top: 20px; margin-right: -40px"> Loged as :
+                        <span id="spnDesignation"> </span>
+                    </p>
+
+                    <form class="form-inline my-2 my-lg-0 " >
+                        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                            <ul class="navbar-nav">
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link" style="width: 160px; text-align: center;" href="#" id="navbarDropdownMenuLink"
+                                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <i class="fas fa-power-off" style="width: 20px; height: 20px; align-content: center"></i>
+                                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" id="logoutlink" style="background-color: #ffffff;">
+                                            <a class="dropdown-item" href="#">
+                                                <i class="far fa-sliders-v"></i> View Profile
+                                            </a>
+                                            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#settingsModal">
+                                                <i class="far fa-sliders-v"></i> Change Password
+                                            </a>
+                                            <a class="dropdown-item" href="#" onclick="btnSignoutMC()">
+                                                <i class="fas fa-power-off"></i> Sign Out
+                                            </a>
+                                        </div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </nav>
+
+        <!-- report -->
+        <div class="container-fluid dashbordbody p-0" >
+
+            <div class="row" id="ui">
+                <div class="col-md-12">
+
+                    <div class="card">
+
+                        <div class="card-header text-center cardhead">
+                            <h3> Report </h3>
+                        </div>
+
+                        <div class="card-body cardbody">
+                <!-- chart -->
+                              <!--  <div class="col-md-4 mt-3">
+                                    <canvas id="myChart" width="400" height="400"></canvas>
+                                </div>-->
+
+                <!-- table -->
+                                <div class="col-md-8 mt-4">
+
+                                    <form>
+                                        <div class="form-group">
+                                            <label for="exampleInputPassword1">Password</label>
+                                            <input type="password" class="form-control" id="exampleInputPassword1">
+                                        </div>
+                                        <div class="form-group form-check">
+                                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                            <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="exampleFormControlSelect1">Example select</label>
+                                            <select class="form-control" id="exampleFormControlSelect1">
+                                                <option>1</option>
+                                                <option>2</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="exampleFormControlSelect2">Example multiple select</label>
+                                            <select multiple class="form-control" id="exampleFormControlSelect2">
+                                                <option>1</option>
+                                                <option>2</option>
+                                                <option>3</option>
+                                                <option>4</option>
+                                                <option>5</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="exampleFormControlFile1">Example file input</label>
+                                            <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                                        </div>
+
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value="" id="defaultCheck2" disabled>
+                                            <label class="form-check-label" for="defaultCheck2">
+                                                Disabled checkbox
+                                            </label>
+                                        </div>
+
+                                       <!-- inline-->
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                                            <label class="form-check-label" for="inlineCheckbox1">1</label>
+                                        </div>
+
+                                        <div class="col-auto my-1">
+                                            <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">Preference</label>
+                                            <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                                                <option selected>Choose...</option>
+                                                <option value="1">One</option>
+                                                <option value="2">Two</option>
+                                                <option value="3">Three</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="custom-control custom-switch">
+                                            <input type="checkbox" class="custom-control-input" id="customSwitch1">
+                                            <label class="custom-control-label" for="customSwitch1">Toggle this switch element</label>
+                                        </div>
+
+                                        <select class="custom-select" multiple>
+                                            <option selected>Open this select menu</option>
+                                            <option value="1">One</option>
+                                            <option value="2">Two</option>
+                                            <option value="3">Three</option>
+                                        </select>
+                                    </form>
+
+
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+                                        <label class="form-check-label" for="exampleRadios1">
+                                            Default radio
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+                                        <label class="form-check-label" for="exampleRadios2">
+                                            Second default radio
+                                        </label>
+                                    </div>
+
+
+
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="card-footer">
+                            <div id="err">
+                                <h3>Error Log</h3>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script>
+    exampleRadios1.value =
+
+</script>
+
+<div class="overlay"></div>
+
+<!-- Settings Modal-->
+<div class="modal fade" id="settingsModal" tabindex="-1" role="dialog"
+     aria-labelledby="settingsModal" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+        <div class="modal-content" id="modalContent">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalTitle"><i
+                        class="fas fa-cog"></i> Settings</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+                <form id="changePasswordForm" onsubmit="return false">
+                    <div class="form-row">
+                        <!-- Username -->
+                        <div class="form-group col-md-12">
+                            <label for="txtUsernameView" class="text-blue">
+                                <b>Username</b>
+                            </label>
+                            <div readonly class="form-control-plaintext"
+                                 id="txtUsernameView"></div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <!-- Current Password -->
+                        <div class="form-group col-md-12">
+                            <label for="txtCurrentPassword"
+                                   class="text-blue"><b>Current Password</b> <i
+                                    class="fas fa-question-circle text-primary ml-1"
+                                    data-toggle="tooltip" data-placement="right"
+                                    title=""></i></label>
+                            <input type="password"
+                                   class="form-control form-control-sm changePasswordFields"
+                                   id="txtCurrentPassword"
+                                   onkeyup="textFieldBinder(txtCurrentPassword, '^[0-9]{5,}$', 'changePassword', 'currentPassword', 'oldChangePassword')">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <!-- New Password -->
+                        <div class="form-group col-md-12">
+                            <label for="txtNewPassword" class="text-blue"><b>New
+                                Password</b><i
+                                    class="fas fa-question-circle text-primary ml-1"
+                                    data-toggle="tooltip" data-placement="right"
+                                    title=""></i></label>
+                            <input type="password"
+                                   class="form-control form-control-sm changePasswordFields"
+                                   id="txtNewPassword"
+                                   onkeyup="passwordFieldBinder(txtNewPassword, txtConfirmPassword, '^[0-9]{5,}$', 'changePassword', '', 'oldChangePassword')">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <!-- Confirm Password -->
+                        <div class="form-group col-md-12">
+                            <label for="txtConfirmPassword"
+                                   class="text-blue"><b>Confirm
+                                Password</b><i
+                                    class="fas fa-question-circle text-primary ml-1"
+                                    data-toggle="tooltip" data-placement="right"
+                                    title=""></i></label>
+                            <input type="password"
+                                   class="form-control form-control-sm changePasswordFields"
+                                   id="txtConfirmPassword"
+                                   onkeyup="passwordFieldBinder(txtNewPassword, txtConfirmPassword, '^[0-9]{5,}$', 'changePassword', 'newPassword', 'oldChangePassword')">
+                        </div>
+                    </div>
+                </form>
+
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="brnClosechnagepasswordmodle" class="btn btn-secondary" data-dismiss="modal">
+                    Close
+                </button>
+                <button type="button" class="btn btn-primary"
+                        onclick="btnSaveChangePasswordMC()">Save changes
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
+

@@ -1,0 +1,136 @@
+/* Validation Colors for Input Controls */
+.rowbcolor{
+    margin-top: 5px;
+    border-bottom: 2px solid #005cbf;
+}
+
+.cbody{
+    overflow: hidden;
+    transition: height 1s, width 1s, padding 1s, visibility 1s, opacity 0.5s ease-out;
+}
+
+.formcontent{
+    border: 2px solid #461220;
+    border-radius: 5px;
+  /*  background: rgb(235,203,212);*/
+}
+
+.cardhead{
+    height: 60px;
+    color: #ffffff;
+    background: rgb(178,58,72);
+    background: radial-gradient(circle, rgba(178,58,72,1) 0%, rgba(70,18,32,1) 81%);
+}
+
+.cardheadinner{
+    height: 45px;
+    color: #ffffff;
+    background: rgb(47,69,80);
+    background: radial-gradient(circle, rgba(47,69,80,1) 0%, rgba(47,69,80,1) 100%);
+}
+
+.cardbody{
+    color: #461220;
+    background: rgb(255,229,217);
+    background: radial-gradient(circle, rgba(255,229,217,1) 0%, rgba(255,215,186,1) 100%);
+}
+
+/*
+
+.cardstyle{
+    border: 2px solid #0b2e13;
+    border-radius: 20px;
+    background-image: linear-gradient(rgba(10,72,221,0.68),rgba(212,255,254,0.68));
+}
+*/
+
+
+.tblbtnprint{
+    border-radius: 5px;
+    color: #ffffff;
+    background-color: #007bff;
+}
+/*
+
+
+body::-webkit-scrollbar{
+    border-radius: 10px;
+    background-image: linear-gradient(rgba(19, 130, 243, 0.93), rgba(212, 255, 254, 0.68));
+}
+body::-webkit-scrollbar-thumb {
+    background-color: blue;    !* color of the scroll thumb *!
+    border-radius: 20px;       !* roundness of the scroll thumb *!
+    border: 3px solid orange;  !* creates padding around scroll thumb *!
+}
+*/
+
+
+
+.invalid .form-control{
+    background-color: pink;
+}
+.valid .form-control{
+    background-color: lightgreen;
+}
+.updated .form-control{
+    background-color: khaki;
+}
+
+
+.file-box{
+    height: 87px;
+    margin-bottom: 7px;
+    border:1px solid #ccc;
+    padding: 5px;
+    position: relative;
+}
+
+.file-box>img{
+    position: absolute;
+    height: 75px;
+    top: 5px;
+    left: 5px;
+}
+
+.file-box>ul{
+    position: absolute;
+    top: 5px;
+    left: 87px;
+    right: 5px;
+    padding: 0px;
+    list-style: none;
+    color: #555;
+    text-align: right;
+}
+
+
+/* Profile Image */
+
+.bntVisibity{
+    cursor: not-allowed;
+}
+
+
+.profileImage {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+}
+
+.generalDetails{
+    background-color:#461220;
+    margin-top:-20px;
+    border-radius: 5px;
+    border: 1px solid #461220;
+    font-weight: bold;
+    color: white;
+}
+
+/* Profile Image Dropdown */
+
+/*
+#err{
+    display: none;
+}
+*/
+

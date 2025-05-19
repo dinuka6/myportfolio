@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+     <link rel="stylesheet" href="style.css">
+
+       
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a href="#home"></a></li>
+            <li><a href="#about"></a></li>
+             <li><a href="#skills"></a></li>
+            <li><a href="#projects"></a></li>
+        </ul>
+    </nav>
+
+    <!-- About project -->
+    <section id="about">
+        <h2 class="section-title"> About the project</h2>
+        <p>
+            Madduma Bandara Kanishta Vidyalaya (MBKV) is a government primary school located in Weliweriya. Approximately 700 students are enrolled in the school. There are a total of five grades in the school, and each grade has four classrooms. A total of 32 staff members are working at the school. The current manual system has lots of problems. It involves a lot of paperwork. 
+        </p>
+        <p>
+            Calculating student results, making reports, and processing payments are time-consuming and may involve errors. Another issue is that important documents lack proper authorization, and documents can be lost or stolen.
+        </p>
+        <p>
+            The proposed system is automated to manage the academic year and events, guardian and teacher information, assign teachers to classrooms, student registration and assignment to classrooms, payment collection, student attendance, student results, and report generation etc.
+        </p>
+        <p>
+            Processes can be done without any complexity or errors. The student management system achieves the client's objectives and provides an efficient, user-friendly, and excellent solution to reduce human effort.
+        </p>
+
+        <button class="preview-btn" onclick="openWinLogin()"> View Project Login</button> <br></br>
+        <button class="preview-btn" onclick="openWinDrive()"> Download Project and documentation</button>
+
+    </section>
+
+    <!--use case-->
+     <section id="projects">
+        <h2 class="section-title"> Design and Testing</h2>
+        <div class="projects-grid">
+            <!-- usecase -->
+           <div class="project-card" >
+                <div class="project-img">
+                    <img src="usecase.jpg" alt="Project 1" >
+                </div>
+                <div class="project-info">
+                    <p>Use Case Diagram</p>
+                </div>
+            </div>
+
+            <!-- Project 2 -->
+            <div class="project-card">
+                <div class="project-img">
+                    <img src="er.png" alt="Project 1">
+                </div>
+                <div class="project-info">                   
+                    <p>ER Diadram</p>
+                </div>
+            </div>
+
+            <!-- Project 3 -->
+           <div class="project-card">
+                <div class="project-img">
+                    <img src="testcases.JPG" alt="Project 1">
+                </div>
+                <div class="project-info">                    
+                    <p>Test Cases</p>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Dinuka. All rights reserved.</p>
+    </footer>
+
+    <!-- JavaScript -->
+     
+    <script src="script.js"></script>
+    <script>
+        function openWinP1() { window.open("gpt.html");}
+
+        function openWinLogin() { window.open("Current-Module/static/login.html");}
+
+        function openWinDrive() { window.open("https://drive.google.com/drive/folders/1PUnQGzuFbKAdG0OX6gwexLXKYy0Uylsk?usp=sharing");}
+
+
+    </script>
+
+</body>
+</html>

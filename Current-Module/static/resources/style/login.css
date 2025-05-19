@@ -1,0 +1,146 @@
+body {
+
+    font-family: sans-serif;
+    background:url(../image/home.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: auto;
+    text-align: left;
+}
+
+
+.box {
+    /*color: white;*/
+    /*width: 400px;*/
+    margin-left: 40px;
+    padding: 50px;
+    text-align: left;
+    position: absolute;
+    /*border-radius: 20px;*/
+   /* background-color: rgba(255, 255, 255, 1);*/
+    transition: 0.25s;
+    /*color: black;*/
+    color: #38040EFF;
+}
+
+
+.box input[type="text"],
+.box input[type="password"] {
+    border: 0;
+    background: none;
+    display: block;
+    margin: auto;
+    text-align: left;
+    border: 1px solid #38040EFF;
+    padding: 10px 10px;
+    width: 350px;
+    outline: none;
+    background-color: white;
+    color: #38040EFF;
+    /*border-radius: 24px;*/
+    transition: 0.25s
+}
+
+.box h1 {
+    color: #38040EFF;
+    text-transform: uppercase;
+    font-weight: 500
+}
+
+.box input[type="text"]:focus,
+.box input[type="password"]:focus {
+    width: 300px;
+    border-color: #2ecc71
+}
+
+.box input[type="submit"] {
+    border: 0;
+    background: #38040EFF;
+    display: block;
+    width: 350px;
+    margin: 20px auto;
+    text-align: center;
+    padding: 10px 10px;
+    outline: none;
+    color: white;
+    border-radius: 4px;
+    transition: 0.25s;
+    cursor: pointer
+}
+
+.box input[type="submit"]:hover {
+    background: #38040EFF
+}
+
+.forgot {
+    text-decoration: underline;
+    text-align: left;
+}
+
+ul.social-network {
+    list-style: none;
+    display: inline;
+    margin-left: 0 !important;
+    padding: 0
+}
+
+ul.social-network li {
+    display: inline;
+    margin: 0 5px
+}
+
+.social-network a.icoFacebook:hover {
+    background-color: #3B5998
+}
+
+.social-network a.icoTwitter:hover {
+    background-color: #33ccff
+}
+
+.social-network a.icoGoogle:hover {
+    background-color: #BD3518
+}
+
+.social-network a.icoFacebook:hover i,
+.social-network a.icoTwitter:hover i,
+.social-network a.icoGoogle:hover i {
+    color: #fff
+}
+
+a.socialIcon:hover,
+.socialHoverClass {
+    color: #44BCDD
+}
+
+.social-circle li a {
+    display: inline-block;
+    position: relative;
+    margin: 0 auto 0 auto;
+    border-radius: 50%;
+    text-align: left;
+    width: 50px;
+    height: 50px;
+    font-size: 20px
+}
+
+.social-circle li i {
+    margin: 0;
+    line-height: 50px;
+    text-align: center;
+}
+
+.social-circle li a:hover i,
+.triggeredHover {
+    transform: rotate(360deg);
+    transition: all 0.2s
+}
+
+.social-circle i {
+    color: #fff;
+    transition: all 0.8s;
+    transition: all 0.8s
+}
+
+/* over*/
+

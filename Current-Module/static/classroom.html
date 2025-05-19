@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Classroom </title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="resources/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="resources/fontawesome/css/all.css">
+
+
+    <style>
+
+        .table-container {
+            width: auto;
+            overflow-x: scroll !important;
+        }
+
+        .tooltip-inner {
+            background-color: #38040EFF;
+        }
+
+    </style>
+
+
+    <script defer src="resources/fontawesome/js/solid.js"></script>
+    <script defer src="resources/fontawesome/js/fontawesome.js"></script>
+
+
+    <script src="resources/jquery/jquery-3.4.1.min.js"></script>
+    <script src="resources/jquery/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="resources/jquery/popper.min.js"></script>
+    <script src="resources/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <script src="resources/script/common.bitproject.js"></script>
+    <script src="resources/script/mainWindow.js"></script>
+    <script src="classroom.js"></script>
+
+
+    <link rel="stylesheet" href="resources/style/home.css">
+    <link rel="stylesheet" href="resources/style/common.css">
+    <link rel="stylesheet" href="resources/style/style3.css">
+    <script src="resources/script/sweetalert.min.js"></script>
+
+</head>
+<body>
+
+<div class="wrapper">
+    <!-- Sidebar  -->
+    <nav id="sidebar" style="background-color: #461220">
+        <div id="dismiss">
+            <i class="fas fa-arrow-left"></i>
+        </div>
+
+        <div class="sidebar-header text-center" style="background-color: #461220">
+            <div style="align-content: center">
+                <img id="profileImage" class="profileImage">
+            </div>
+            <div style="margin-top: 10px">
+                <p class="loggedUserNameField d-inline mt-2" id="lblLogUser">123456</p>
+            </div>
+        </div>
+
+        <ul class="list-unstyled components" >
+            <li>
+                <a href="http://localhost:8080/mainwindow">
+                    <i class="fas fa-home"></i>
+                    Dashboard
+                </a>
+            </li>
+
+            <li>
+                <a href="#privilagemenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                    <i class="fas fa-key">  </i>
+                    User & privileges
+                </a>
+                <ul class="collapse list-unstyled" id="privilagemenu">
+                    <li class="EMPLOYEE">
+                        <a href="http://localhost:8080/employee">Employee</a>
+                    </li>
+                    <li class="USER">
+                        <a href="http://localhost:8080/user">User</a>
+                    </li>
+                    <li class="PRIVILAGE">
+                        <a href="http://localhost:8080/privilage">privilage</a>
+                    </li>
+                </ul>
+            </li>
+
+            <li>
+                <a href="#administmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                    <i class="fas fa-briefcase"></i>
+                    Administration
+                </a>
+                <ul class="collapse list-unstyled" id="administmenu">
+                    <li class="ACADAMICYEAR">
+                        <a href="http://localhost:8080/acadamicyear">Acadamic Year</a>
+                    </li>
+                    <li class="TEACHER">
+                        <a href="http://localhost:8080/teacher">Teacher</a>
+                    </li>
+                    <li class="CLASSROOM">
+                        <a href="http://localhost:8080/classroom">Classroom</a>
+                    </li>
+                </ul>
+            </li>
+
+            <li>
+                <a href="#studentmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                    <i class="fas fa-user-tie"></i>
+                    Student
+                </a>
+                <ul class="collapse list-unstyled" id="studentmenu">
+                    <li class="GUARDIAN">
+                        <a href="http://localhost:8080/guardian"> Guardian </a>
+                    </li>
+                    <li class="STUDENT">
+                        <a href="http://localhost:8080/student"> Student </a>
+                    </li>
+                    <li class="STUDENTREGISTRATION">
+                        <a href="http://localhost:8080/studentregistration"> Student Registration </a>
+                    </li>
+                    <li class="STUDENTPAYMENT">
+                        <a href="http://localhost:8080/studentpayment"> Student Payment </a>
+                    </li>
+                </ul>
+            </li>
+
+            <li>
+                <a href="#eventmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                    <i class="fas fa-calendar-day"></i>
+                    Events & Exams
+                </a>
+                <ul class="collapse list-unstyled" id="eventmenu">
+                    <li class="EVENTDETAIL">
+                        <a href="http://localhost:8080/eventdetail"> Events </a>
+                    </li>
+                    <li class="EXAM">
+                        <a href="http://localhost:8080/exam"> Exams </a>
+                    </li>
+                    <li class="SCHOLARSHIPAPPLICATION">
+                        <a href="http://localhost:8080/scholarshipapplication"> Scholarship Applocation </a>
+                    </li>
+                    <li class="EXAMRESULT">
+                        <a href="http://localhost:8080/examresult"> Results </a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="#seventmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                    <i class="fas fa-school"></i>
+                    Classroom
+                </a>
+                <ul class="collapse list-unstyled" id="seventmenu">
+                    <li class="ATTENDANCE">
+                        <a href="http://localhost:8080/schoolday"> Attendance </a>
+                    </li>
+                    <li class="EXAMRESULT">
+                        <a href="http://localhost:8080/examresult"> Results </a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Page Content  -->
+    <div id="content">
+
+        <nav class="navbar navbar-expand-lg navbar-dark " style="background-color: #461220; height: 80px ">
+            <div class="container-fluid">
+                <div class="float-left">
+                    <button type="button" id="sidebarCollapse" class="btn btn-outline-light btn-lg ml-4 sidebutton">
+                        <i class="fas fa-bars"></i>
+                        <span></span>
+                    </button>
+                    <button type="button" class="btn btn-lg ml-2 rounded-circle">
+                        <a href="http://localhost:8080/mainwindow">
+                            <img src="resources/image/mbkvlogo.png" height="60" width="60">
+                        </a>
+                        <span></span>
+                    </button>
+                </div>
+                <div>
+                    <h2 class="text-white font-weight-bold"> Madduma Bandara Kanishta Vidyalaya </h2>
+                </div>
+                <div class="row" >
+                    <p class="font-weight-bold text-white" style="margin-top: 20px; margin-right: -40px"> Loged as :
+                        <span id="spnDesignation"> </span>
+                    </p>
+
+                    <form class="form-inline my-2 my-lg-0 " >
+                        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                            <ul class="navbar-nav">
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link" style="width: 160px; text-align: center;" href="#" id="navbarDropdownMenuLink"
+                                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <i class="fas fa-power-off" style="width: 20px; height: 20px; align-content: center"></i>
+                                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" id="logoutlink" style="background-color: #ffffff;">
+                                            <a class="dropdown-item" href="#">
+                                                <i class="far fa-sliders-v"></i> View Profile
+                                            </a>
+                                            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#settingsModal">
+                                                <i class="far fa-sliders-v"></i> Change Password
+                                            </a>
+                                            <a class="dropdown-item" href="#" onclick="btnSignoutMC()">
+                                                <i class="fas fa-power-off"></i> Sign Out
+                                            </a>
+                                        </div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </nav>
+
+        <!-- classroom -->
+        <div class="container-fluid dashbordbody p-0" >
+
+            <div class="row" id="ui">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header text-center cardhead">
+                            <h4> Classroom Management</h4>
+                        </div>
+
+                        <div class="card-body cardbody">
+
+                            <ul class="nav nav-tabs mb-1">
+                                <li class="nav-item" onclick="changeTab('form')">
+                                    <a class="nav-link active" id="tbForm" href="#" style="background-color: #b23a48; color: white; font-weight: bold; border-radius: 10px 10px 0px 0px">
+                                       Classroom Details Form </a>
+                                </li>
+                                <li class="nav-item" onclick="changeTab('table')">
+                                    <a class="nav-link" id="tbTable" href="#" style="background-color: #b23a48; color: white; font-weight: bold; border-radius: 10px 10px 0px 0px">
+                                        Classroom Details Table </a>
+                                </li>
+                            </ul>
+
+                            <div class="row"  id="divFrom">
+                                <div class="col-md-12">
+                                    <form class="" id="guardianform" onsubmit="return false">
+
+
+                                        <div class="row" >
+                                            <div class="col-md-12 pull-right text-right">
+                                                <p style="color: #38040EFF; font-size: 15px; font-weight: bold;">
+                                                    <span style="color:red;">*</span> Required Fields</p>
+                                            </div>
+                                        </div>
+                                        <!-- form start -->
+                                        <!--year /grade/ classcode / cLass name -->
+                                        <div class="row">
+
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label class="font-weight-bold" for="cmbYear"> Acadamic Year :
+                                                        <span style="color:red;">*</span>
+                                                    </label>
+                                                    <select id="cmbYear" class="form-control"  required
+                                                            onchange="comboBoxBinder(cmbYear,'','classroom','acadamicyear_id','oldclassroom')">
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label class="font-weight-bold" for="cmbGrade">Grade :
+                                                        <span style="color:red;">*</span>
+                                                    </label>
+                                                    <select id="cmbGrade" class="form-control"  required
+                                                            onchange="comboBoxBinder(cmbGrade,'','classroom','grade_id','oldclassroom')">
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label class="font-weight-bold" for="cmbClassCode">Classroom Code :
+                                                        <span style="color:red;">*</span>
+                                                    </label>
+                                                    <select id="cmbClassCode" class="form-control" required
+                                                            onchange="comboBoxBinder(cmbClassCode,'','classroom','classcode_id','oldclassroom')">
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label class="font-weight-bold" for="txtClassName"> Classroom name :
+                                                        <span style="color:red;">*</span>
+                                                    </label>
+                                                    <input type="text" id="txtClassName" class="form-control" required disabled
+                                                           data-toggle="tooltip" data-placement="bottom" title="2021G1A"
+                                                           onkeyup="textFieldBinder(txtClassName,'^.*$','classroom','name','oldclassroom')"
+                                                    />
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                        <!--teacher / location /description-->
+                                        <div class="row mt-1">
+
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label class="font-weight-bold" for="cmbTeacher" >Class Teacher :
+                                                        <span style="color: red;">*</span>
+                                                    </label>
+                                                    <select id="cmbTeacher" class="form-control" required
+                                                            onchange="comboBoxBinder(cmbTeacher,'','classroom','classteacher_id','oldclassroom')">
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label class="font-weight-bold" for="txtLocation"> Location :
+                                                        <span style="color:red;">*</span>
+                                                    </label>
+                                                    <input type="text" id="txtLocation" class="form-control"
+                                                           placeholder="Enter Location" required
+                                                           data-toggle="tooltip" data-placement="bottom" title="Manel Buliding 1st Floor"
+                                                           onkeyup="textFieldBinder(txtLocation,'^.*$','classroom','location','oldclassroom')"
+                                                    />
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="font-weight-bold" for="txtDescription"> Description :
+                                                    </label>
+                                                    <textarea id="txtDescription" class="form-control"
+                                                              placeholder="Enter Description Here" rows="1"
+                                                              data-toggle="tooltip" data-placement="bottom" title="Special Details"
+                                                              onkeyup="textFieldBinder(txtDescription,'^.*$','classroom','description','oldclassroom')">
+                                                    </textarea>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                        <!--asign date / status / added by -->
+                                        <div class="row mt-1">
+
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label class="font-weight-bold" for="dteAsignDate"> Added Date :
+                                                        <span style="color:red;">*</span>
+                                                    </label>
+                                                    <input type="date" id="dteAsignDate" class="form-control" required
+                                                           onkeyup="textFieldBinder(dteAsignDate,'','classroom','addeddate','oldclassroom')"
+                                                    />
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label class="font-weight-bold" for="cmbClassroomstatus"> Classroom Status :
+                                                        <span style="color:red;">*</span>
+                                                    </label>
+                                                    <select id="cmbClassroomstatus" class="form-control" required
+                                                            onchange="comboBoxBinder(cmbClassroomstatus,'','classroom','classrooomstatus_id','oldclassroom')">
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label class="font-weight-bold" for="cmbAddedBy">Added By :
+                                                        <span style="color: red;">*</span>
+                                                    </label>
+                                                    <select id="cmbAddedBy" class="form-control" required
+                                                            onchange="comboBoxBinder(cmbAddedBy,'','guardian','employee_id','oldguardian')">
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                        <!-- form end -->
+
+                                        <!--form buttons-->
+                                        <div class="text-right">
+                                            <button class="btn btn-primary " type="button" id="btnClear" style="width: 15%">
+                                                Clear Form
+                                            </button>
+
+                                            <button class="btn btn-warning" type="submit" id="btnUpdate" style="width: 15%">
+                                                Update Form
+                                            </button>
+
+                                            <button class="btn btn-success" style="width: 15%" type="submit" id="btnAdd">
+                                                Add Classroom
+                                            </button>
+                                        </div>
+
+
+                                    </form>
+                                </div>
+                            </div>
+
+                            <div class="row p-3 formcontent" id="divTable">
+                                <!--print and search -->
+                                <div class="container-fluid mt-2">
+                                    <input type="button" class="btn tblbtnprint font-weight-bold" value="Print Table"
+                                           id="btnPrintTable" onclick="btnPrintTableMC()"/>
+
+                                    <div class="float-right">
+                                        <input placeholder="Search" class="form-control" type="text"
+                                               id="txtSearchName"/>
+                                    </div>
+
+                                </div>
+
+
+                                <hr/>
+                                <!--guardian table -->
+                                <div class="table-responsive" id="tableParent" class="table-container ml-2">
+
+                                    <script>
+                                        function getNameColumn(ob) {
+                                            return ob.callingname + "(" + ob.number + ")";
+                                        }
+
+                                        var metadata = [
+                                            {name: 'Classroom Name', search: false, datatype: 'text', property: 'name'},
+                                            {name: 'Class teacher', search: false, datatype: 'text', property: 'classteacher_id.callingname'},
+                                            {name: 'Location', search: false, datatype: 'text', property: 'location'},
+                                            {name: 'Status', search: false, datatype: 'text', property: 'classrooomstatus_id.name'}
+                                        ];
+
+                                        //table function
+                                        table("tableParent", "tblClassroom", metadata, true);
+                                    </script>
+
+
+                                </div>
+
+                                <div>
+                                    <div style="display: inline-block ; float: left">
+                                        <select class="form-control input" id="cmbPageSize"
+                                                style="width: 80px;">
+                                            <option selected value="10">10</option>
+                                            <option value="15">15</option>
+                                            <option value="30">30</option>
+                                            <option value="500">500</option>
+                                            <option value="1000">1000</option>
+                                        </select>
+                                        <script>
+                                            cmbPageSize.onchange = function chnagePageSize() {
+                                                activepage = 1;
+                                                btnSearchMC();
+                                            };
+                                        </script>
+                                    </div>
+                                    <div style="display: inline-block; margin-left: 10px;">
+                                        <ul id="pagination" class="pagination"></ul>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+
+                        <div class="card-footer">
+                            <div id="err">
+                                <h3>Error Log</h3>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>
+</div>
+
+
+<!-- Modal view guardian -->
+<div class="modal fade" id="ClassroomVieweModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header" style="background: #800E13FF; color: white">
+                <div class="row text-center">
+                    <h4 class="modal-title ml-3" id="exampleModalLabel">Clasroom details</h4>
+                </div>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true" style="color: white">
+                        <i class="fas fa-times"></i>
+                    </span>
+                </button>
+            </div>
+            <div class="modal-body" >
+                <table id="printformtable" class="table table-striped  table-sm">
+                    <tbody>
+                    <tr>
+                        <td class="text-right">Acadamic Year :</td>
+                        <td id="tdYear" class="text-left"></td>
+                    </tr>
+                    <tr>
+                        <td class="text-right">Grade :</td>
+                        <td id="tdGrade" class="text-left"></td>
+                    </tr>
+                    <tr>
+                        <td class="text-right">Classroom Code :</td>
+                        <td id="tdClassCode" class="text-left"></td>
+                    </tr>
+                    <tr>
+                        <td class="text-right">Clasroom Name :</td>
+                        <td id="tdClassName" class="text-left"></td>
+                    </tr>
+                    <tr>
+                        <td class="text-right">Class Teacher :</td>
+                        <td id="tdTeacher" class="text-left"></td>
+                    </tr>
+                    <tr>
+                        <td class="text-right">Location :</td>
+                        <td id="tdLocation" class="text-left"></td>
+                    </tr>
+                    <tr>
+                        <td class="text-right">Description :</td>
+                        <td id="tdDescription" class="text-left"></td>
+                    </tr>
+                    <tr>
+                        <td class="text-right">Added Date :</td>
+                        <td id="tdAsignDate" class="text-left"></td>
+                    </tr>
+                    <tr>
+                        <td class="text-right">Classroom Status :</td>
+                        <td id="tdClassroomstatus" class="text-left"></td>
+                    </tr>
+                    <tr>
+                        <td class="text-right">Added By :</td>
+                        <td id="tdAddedBy" class="text-left"></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" onclick="btnPrintRowMC()" >Print</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="overlay"></div>
+
+<!-- Settings Modal-->
+<div class="modal fade" id="settingsModal" tabindex="-1" role="dialog"
+     aria-labelledby="settingsModal" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+        <div class="modal-content" id="modalContent">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalTitle"><i
+                        class="fas fa-cog"></i> Settings</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+                <form id="changePasswordForm" onsubmit="return false">
+                    <div class="form-row">
+                        <!-- Username -->
+                        <div class="form-group col-md-12">
+                            <label for="txtUsernameView" class="text-blue">
+                                <b>Username</b>
+                            </label>
+                            <div readonly class="form-control-plaintext"
+                                 id="txtUsernameView"></div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <!-- Current Password -->
+                        <div class="form-group col-md-12">
+                            <label for="txtCurrentPassword"
+                                   class="text-blue"><b>Current Password</b> <i
+                                    class="fas fa-question-circle text-primary ml-1"
+                                    data-toggle="tooltip" data-placement="right"
+                                    title=""></i></label>
+                            <input type="password"
+                                   class="form-control form-control-sm changePasswordFields"
+                                   id="txtCurrentPassword"
+                                   onkeyup="textFieldBinder(txtCurrentPassword, '^[0-9]{5,}$', 'changePassword', 'currentPassword', 'oldChangePassword')">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <!-- New Password -->
+                        <div class="form-group col-md-12">
+                            <label for="txtNewPassword" class="text-blue"><b>New
+                                Password</b><i
+                                    class="fas fa-question-circle text-primary ml-1"
+                                    data-toggle="tooltip" data-placement="right"
+                                    title=""></i></label>
+                            <input type="password"
+                                   class="form-control form-control-sm changePasswordFields"
+                                   id="txtNewPassword"
+                                   onkeyup="passwordFieldBinder(txtNewPassword, txtConfirmPassword, '^[0-9]{5,}$', 'changePassword', '', 'oldChangePassword')">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <!-- Confirm Password -->
+                        <div class="form-group col-md-12">
+                            <label for="txtConfirmPassword"
+                                   class="text-blue"><b>Confirm
+                                Password</b><i
+                                    class="fas fa-question-circle text-primary ml-1"
+                                    data-toggle="tooltip" data-placement="right"
+                                    title=""></i></label>
+                            <input type="password"
+                                   class="form-control form-control-sm changePasswordFields"
+                                   id="txtConfirmPassword"
+                                   onkeyup="passwordFieldBinder(txtNewPassword, txtConfirmPassword, '^[0-9]{5,}$', 'changePassword', 'newPassword', 'oldChangePassword')">
+                        </div>
+                    </div>
+                </form>
+
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="brnClosechnagepasswordmodle" class="btn btn-secondary" data-dismiss="modal">
+                    Close
+                </button>
+                <button type="button" class="btn btn-primary"
+                        onclick="btnSaveChangePasswordMC()">Save changes
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
+

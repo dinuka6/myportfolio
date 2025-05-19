@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title> Attendance </title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="resources/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="resources/fontawesome/css/all.css">
+
+
+    <style>
+
+        .table-container {
+            width: auto;
+            overflow-x: scroll !important;
+        }
+
+        .tooltip-inner {
+            background-color: #38040EFF;
+        }
+
+    </style>
+
+    <script defer src="resources/fontawesome/js/solid.js"></script>
+    <script defer src="resources/fontawesome/js/fontawesome.js"></script>
+
+    <!--toggle button links-->
+    <link rel="stylesheet" href="resources/bootstrap/css/bootstrap4-toggle.min.css">
+    <script defer src="resources/bootstrap/js/bootstrap4-toggle.min.js"></script>
+
+    <script src="resources/jquery/jquery-3.4.1.min.js"></script>
+    <script src="resources/jquery/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="resources/jquery/popper.min.js"></script>
+    <script src="resources/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <script src="resources/script/common.bitproject.js"></script>
+    <script src="resources/script/innertablefunctions.js"></script>
+    <script src="resources/script/mainWindow.js"></script>
+    <script src="schoolday.js"></script>
+
+    <link rel="stylesheet" href="resources/style/home.css">
+    <link rel="stylesheet" href="resources/style/common.css">
+    <link rel="stylesheet" href="resources/style/style3.css">
+    <script src="resources/script/sweetalert.min.js"></script>
+
+</head>
+<body>
+
+<div class="wrapper">
+    <!-- Sidebar  -->
+    <nav id="sidebar" style="background-color: #461220">
+        <div id="dismiss">
+            <i class="fas fa-arrow-left"></i>
+        </div>
+
+        <div class="sidebar-header text-center" style="background-color: #461220">
+            <div style="align-content: center">
+                <img id="profileImage" class="profileImage">
+            </div>
+            <div style="margin-top: 10px">
+                <p class="loggedUserNameField d-inline mt-2" id="lblLogUser">123456</p>
+            </div>
+        </div>
+
+        <ul class="list-unstyled components" >
+            <li>
+                <a href="http://localhost:8080/mainwindow">
+                    <i class="fas fa-home"></i>
+                    Dashboard
+                </a>
+            </li>
+
+            <li>
+                <a href="#privilagemenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                    <i class="fas fa-key">  </i>
+                    User & privileges
+                </a>
+                <ul class="collapse list-unstyled" id="privilagemenu">
+                    <li class="EMPLOYEE">
+                        <a href="http://localhost:8080/employee">Employee</a>
+                    </li>
+                    <li class="USER">
+                        <a href="http://localhost:8080/user">User</a>
+                    </li>
+                    <li class="PRIVILAGE">
+                        <a href="http://localhost:8080/privilage">privilage</a>
+                    </li>
+                </ul>
+            </li>
+
+            <li>
+                <a href="#administmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                    <i class="fas fa-briefcase"></i>
+                    Administration
+                </a>
+                <ul class="collapse list-unstyled" id="administmenu">
+                    <li class="ACADAMICYEAR">
+                        <a href="http://localhost:8080/acadamicyear">Acadamic Year</a>
+                    </li>
+                    <li class="TEACHER">
+                        <a href="http://localhost:8080/teacher">Teacher</a>
+                    </li>
+                    <li class="CLASSROOM">
+                        <a href="http://localhost:8080/classroom">Classroom</a>
+                    </li>
+                </ul>
+            </li>
+
+            <li>
+                <a href="#studentmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                    <i class="fas fa-user-tie"></i>
+                    Student
+                </a>
+                <ul class="collapse list-unstyled" id="studentmenu">
+                    <li class="GUARDIAN">
+                        <a href="http://localhost:8080/guardian"> Guardian </a>
+                    </li>
+                    <li class="STUDENT">
+                        <a href="http://localhost:8080/student"> Student </a>
+                    </li>
+                    <li class="STUDENTREGISTRATION">
+                        <a href="http://localhost:8080/studentregistration"> Student Registration </a>
+                    </li>
+                    <li class="STUDENTPAYMENT">
+                        <a href="http://localhost:8080/studentpayment"> Student Payment </a>
+                    </li>
+                </ul>
+            </li>
+
+            <li>
+                <a href="#eventmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                    <i class="fas fa-calendar-day"></i>
+                    Events & Exams
+                </a>
+                <ul class="collapse list-unstyled" id="eventmenu">
+                    <li class="EVENTDETAIL">
+                        <a href="http://localhost:8080/eventdetail"> Events </a>
+                    </li>
+                    <li class="EXAM">
+                        <a href="http://localhost:8080/exam"> Exams </a>
+                    </li>
+                    <li class="SCHOLARSHIPAPPLICATION">
+                        <a href="http://localhost:8080/scholarshipapplication"> Scholarship Applocation </a>
+                    </li>
+                    <li class="EXAMRESULT">
+                        <a href="http://localhost:8080/examresult"> Results </a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="#seventmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                    <i class="fas fa-school"></i>
+                    Classroom
+                </a>
+                <ul class="collapse list-unstyled" id="seventmenu">
+                    <li class="ATTENDANCE">
+                        <a href="http://localhost:8080/schoolday"> Attendance </a>
+                    </li>
+                    <li class="EXAMRESULT">
+                        <a href="http://localhost:8080/examresult"> Results </a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Page Content  -->
+    <div id="content">
+
+        <nav class="navbar navbar-expand-lg navbar-dark " style="background-color: #461220; height: 80px ">
+            <div class="container-fluid">
+                <div class="float-left">
+                    <button type="button" id="sidebarCollapse" class="btn btn-outline-light btn-lg ml-4 sidebutton">
+                        <i class="fas fa-bars"></i>
+                        <span></span>
+                    </button>
+                    <button type="button" class="btn btn-lg ml-2 rounded-circle">
+                        <a href="http://localhost:8080/mainwindow">
+                            <img src="resources/image/mbkvlogo.png" height="60" width="60">
+                        </a>
+                        <span></span>
+                    </button>
+                </div>
+                <div>
+                    <h2 class="text-white font-weight-bold"> Madduma Bandara Kanishta Vidyalaya </h2>
+                </div>
+                <div class="row" >
+                    <p class="font-weight-bold text-white" style="margin-top: 20px; margin-right: -40px"> Loged as :
+                        <span id="spnDesignation"> </span>
+                    </p>
+
+                    <form class="form-inline my-2 my-lg-0 " >
+                        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                            <ul class="navbar-nav">
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link" style="width: 160px; text-align: center;" href="#" id="navbarDropdownMenuLink"
+                                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <i class="fas fa-power-off" style="width: 20px; height: 20px; align-content: center"></i>
+                                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" id="logoutlink" style="background-color: #ffffff;">
+                                            <a class="dropdown-item" href="#">
+                                                <i class="far fa-sliders-v"></i> View Profile
+                                            </a>
+                                            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#settingsModal">
+                                                <i class="far fa-sliders-v"></i> Change Password
+                                            </a>
+                                            <a class="dropdown-item" href="#" onclick="btnSignoutMC()">
+                                                <i class="fas fa-power-off"></i> Sign Out
+                                            </a>
+                                        </div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </nav>
+
+        <!-- schoolday -->
+        <div class="container-fluid dashbordbody p-0" >
+
+            <div class="row" id="ui">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header text-center cardhead">
+                            <h4> Student Attendance Management</h4>
+                        </div>
+
+                        <div class="card-body cardbody">
+
+                            <ul class="nav nav-tabs mb-1">
+                                <li class="nav-item" onclick="changeTab('form')">
+                                    <a class="nav-link active" id="tbForm" href="#" style="background-color: #b23a48; color: white; font-weight: bold; border-radius: 10px 10px 0px 0px">
+                                        Student Attendance Form</a>
+                                </li>
+                                <li class="nav-item" onclick="changeTab('table')">
+                                    <a class="nav-link" id="tbTable" href="#" style="background-color: #b23a48; color: white; font-weight: bold; border-radius: 10px 10px 0px 0px">
+                                        Student Attendance Table </a>
+                                </li>
+                            </ul>
+
+                            <div class="row"  id="divFrom">
+                                <div class="col-md-12">
+                                    <form class="" id="schooldayform" onsubmit="return false">
+
+
+                                        <div class="row" >
+                                            <div class="col-md-12 pull-right text-right">
+                                                <p style="color: #38040EFF; font-size: 15px; font-weight: bold;">
+                                                    <span style="color:red;">*</span> Required Fields
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <!-- form form start -->
+
+                                        <div class="row">
+
+                            <!--school day form-->
+                                            <div class="col-md-6">
+
+                                <!--year / classroom / school day -->
+                                                <div class="row">
+
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                            <label class="font-weight-bold" for="cmbYear"> Year :
+                                                                <span style="color:red;">*</span>
+                                                            </label>
+                                                            <select id="cmbYear" class="form-control" required
+                                                                    onchange="comboBoxBinder(cmbYear,'','schoolday','acadamicyear_id','oldschoolday')">
+                                                            </select>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                            <label class="font-weight-bold" for="cmbClassroom"> Classroom :
+                                                                <span style="color:red;">*</span>
+                                                            </label>
+                                                            <select id="cmbClassroom" class="form-control" required
+                                                                    onchange="comboBoxBinder(cmbClassroom,'','schoolday','classroom_id','oldschoolday')">
+                                                            </select>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                            <label class="font-weight-bold" for="dteSchoolDay"> School Day :
+                                                                <span style="color:red;">*</span>
+                                                            </label>
+                                                            <input type="date" id="dteSchoolDay" class="form-control" required
+                                                                   data-toggle="tooltip" data-placement="bottom" title="10/10/2021"
+                                                                   onkeyup="textFieldBinder(dteSchoolDay,'','schoolday','schooldate','oldschoolday')"/>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+
+
+                                <!--attendance count / added date time / added by-->
+                                                <div class="row">
+
+                                                    <div class="col-md-5">
+
+                                                        <div class="form-group">
+                                                            <label class="font-weight-bold" for="dteAddedDateTime"> Added Date time :
+                                                                <span style="color:red;">*</span>
+                                                            </label>
+                                                            <input type="datetime-local" id="dteAddedDateTime" class="form-control" required disabled
+                                                                   data-toggle="tooltip" data-placement="bottom" title="10/10/2021 08:45"
+                                                                   onkeyup="textFieldBinder(dteAddedDateTime,'','schoolday','addeddatetime','oldschoolday')"/>
+                                                        </div>
+
+                                                        <div class="form-group">
+                                                            <label class="font-weight-bold" for="CmbAddedby">Added By :
+                                                                <span style="color: red;">*</span>
+                                                            </label>
+                                                            <select id="CmbAddedby" class="form-control" required disabled
+                                                                    onchange="comboBoxBinder(CmbAddedby,'','schoolday','employee_id','oldschoolday')">
+                                                            </select>
+                                                        </div>
+
+                                                    </div>
+
+                                                    <div class="col-md-6 mt-2 ml-3" style="border: 2px solid #2f4550; border-radius: 5px;">
+
+                                                        <div class="row mt-3">
+                                                            <label class="col-md-8 font-weight-bold" for="txtTotalStu"> Total Students :
+                                                                <span style="color:red;">*</span>
+                                                            </label>
+                                                            <div class="col-md-4">
+                                                                <input type="text" id="txtTotalStu" class="form-control" required disabled
+                                                                       onkeyup="textFieldBinder(txtTotalStu,'','schoolday','totalstudents','oldschoolday')" />
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="row mt-2">
+                                                            <label class="col-md-8 font-weight-bold" for="txtHeadcount"> Today attendance :
+                                                                <span style="color:red;">*</span>
+                                                            </label>
+                                                            <div class="col-md-4">
+                                                                <input type="text" id="txtHeadcount" class="form-control" required disabled
+                                                                       onkeyup="textFieldBinder(txtHeadcount,'','schoolday','headcount','oldschoolday')" />
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="row mt-2 mb-3">
+                                                            <label class="col-md-8 font-weight-bold" for="txtAbsent"> Absent :
+                                                                <span style="color:red;">*</span>
+                                                            </label>
+                                                            <div class="col-md-4">
+                                                                <input type="text" id="txtAbsent" class="form-control" required disabled
+                                                                       onkeyup="textFieldBinder(txtAbsent,'','schoolday','absent','oldschoolday')" />
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+
+                                                </div>
+
+                                <!--description / count -->
+                                                <div class="row mt-3">
+
+                                                    <div class="col-md-7">
+                                                        <div class="form-group">
+                                                            <label class="font-weight-bold" for="txtDescription"> Description :
+                                                            </label>
+                                                            <textarea id="txtDescription" class="form-control"
+                                                                      placeholder="Enter Description Here" rows="2"
+                                                                      data-toggle="tooltip" data-placement="bottom" title="Enter Description Here"
+                                                                      onkeyup="textFieldBinder(txtDescription,'^.*$','schoolday','description','oldschoolday')">
+                                                            </textarea>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-md-5">
+                                                        <div class="form-group">
+                                                            <label class="font-weight-bold" for="cmbSchoolDayStatus"> Day Status :
+                                                                <span style="color:red;">*</span>
+                                                            </label>
+                                                            <select id="cmbSchoolDayStatus" class="form-control" required disabled
+                                                                    onchange="comboBoxBinder(cmbSchoolDayStatus,'','schoolday','schooldaystatus_id','oldschoolday')">
+                                                            </select>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+
+
+                            <!--attendance table -->
+                                            <div class="col-md-6">
+
+                                <!--Inne form-->
+                                                <div class="col-md-12 align-content-center">
+                                                    <div class="card" style="border: 2px solid #2f4550; border-radius: 5px;">
+                                                        <div class="card-header cardheadinner" style="text-align: center;">
+                                                            <h5 style="margin-top: -7px"> Student Attendnce </h5>
+                                                        </div>
+
+                                                        <div class="card-body text-center">
+                                                            <div>
+                                                                <table class="table table-bordered " id="tblInnerStuAttend">
+                                                                    <thead>
+                                                                    <tr>
+                                                                        <th> No </th>
+                                                                        <th> Index No </th>
+                                                                        <th> Calling Name </th>
+                                                                        <th> attendance </th>
+                                                                    </tr>
+                                                                    </thead>
+                                                                    <tbody></tbody>
+                                                                </table>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+
+
+                                        <!-- form end -->
+
+                                        <!--form buttons-->
+                                        <div class="text-right mt-3">
+                                            <button class="btn btn-primary " type="button" id="btnClear" style="width: 15%">
+                                               Clear Form
+                                            </button>
+
+                                            <button class="btn btn-warning" type="submit" id="btnUpdate" style="width: 15%">
+                                                Update Form
+                                            </button>
+
+                                            <button class="btn btn-success" style="width: 15%" type="submit" id="btnAdd">
+                                                Add Attendance
+                                            </button>
+                                        </div>
+
+
+                                    </form>
+                                </div>
+                            </div>
+
+                            <div class="row p-3 formcontent" id="divTable">
+                                <!--print and search -->
+                                <div class="container-fluid mt-2">
+                                    <input type="button" class="btn tblbtnprint font-weight-bold" value="Print Table"
+                                           id="btnPrintTable" onclick="btnPrintTableMC()"/>
+
+                                    <div class="float-right">
+                                        <input placeholder="Search" class="form-control" type="text"
+                                               id="txtSearchName"/>
+                                    </div>
+
+                                </div>
+
+
+                                <hr/>
+                                <!--year table -->
+                                <div class="table-responsive" id="tableParent" class="table-container ml-2">
+
+                                    <script>
+
+                                        function getNameColumn(ob) {
+                                            return ob.callingname + "(" + ob.number + ")";
+                                        }
+
+                                        var metadata = [
+                                            {name: 'School date', search: false, datatype: 'text', property: 'schooldate'},
+                                            {name: 'Classroom', search: false, datatype: 'text', property: 'classroom_id.name'},
+                                            {name: 'Total Students', search: false, datatype: 'text', property: 'totalstudents'},
+                                            {name: 'Present', search: false, datatype: 'text', property: 'headcount'},
+                                            {name: 'Status', search: false, datatype: 'text', property: 'schooldaystatus_id.name'}
+                                        ];
+
+                                        //table function
+                                        table("tableParent", "tblSchoolday", metadata, true);
+
+                                    </script>
+
+
+                                </div>
+
+                                <div>
+                                    <div style="display: inline-block ; float: left">
+                                        <select class="form-control input" id="cmbPageSize"
+                                                style="width: 80px;">
+                                            <option selected value="10">10</option>
+                                            <option value="15">15</option>
+                                            <option value="30">30</option>
+                                            <option value="500">500</option>
+                                            <option value="1000">1000</option>
+                                        </select>
+                                        <script>
+                                            cmbPageSize.onchange = function chnagePageSize() {
+                                                activepage = 1;
+                                                btnSearchMC();
+                                            };
+                                        </script>
+                                    </div>
+                                    <div style="display: inline-block; margin-left: 10px;">
+                                        <ul id="pagination" class="pagination"></ul>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+
+                        <div class="card-footer">
+                            <div id="err">
+                                <h3>Error Log</h3>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>
+</div>
+
+
+<!-- Modal view guardian -->
+<div class="modal fade" id="schooldayVieweModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header" style="background: #800E13FF; color: white">
+                <div class="row text-center">
+                    <h4 class="modal-title ml-3" id="exampleModalLabel">Student Attendance</h4>
+                </div>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true" style="color: white">
+                        <i class="fas fa-times"></i>
+                    </span>
+                </button>
+            </div>
+            <div class="modal-body" >
+                <table id="printformtable" class="table table-container">
+                    <tbody>
+                    <tr>
+                        <td>Year :</td>
+                        <td id="tdcmbYear"></td>
+                    </tr>
+                    <tr>
+                        <td>Classroom :</td>
+                        <td id="tdcmbClassroom"></td>
+                    </tr>
+                    <tr>
+                        <td>Date :</td>
+                        <td id="tddteSchoolDay"></td>
+                    </tr>
+                    <tr>
+                        <td>Total students :</td>
+                        <td id="tdtxtTotalStu"></td>
+                    </tr>
+                    <tr>
+                        <td>Today attendace :</td>
+                        <td id="tdtxtHeadcount"></td>
+                    </tr>
+                    <tr>
+                        <td>Today absents :</td>
+                        <td id="tdtxtAbsent"></td>
+                    </tr>
+                    <tr>
+                        <td>Added date time :</td>
+                        <td id="tddteAddedDateTime"></td>
+                    </tr>
+                    <tr>
+                        <td>Description :</td>
+                        <td id="tdtxtDescription"></td>
+                    </tr>
+                    <tr>
+                        <td>Day status :</td>
+                        <td id="tdcmbSchoolDayStatus"></td>
+                    </tr>
+                    <tr>
+                        <td>Added by :</td>
+                        <td id="tdCmbAddedby"></td>
+                    </tr>
+                    <tr>
+                        <td id="printinnerTable">
+                            <script>
+                                function getAttendanceOption(ob){
+                                    var attendance = "Absent";
+                                    if (ob.attendance)
+                                        attendance = "Present";
+                                    return attendance;
+                                }
+
+                                var metedatainner = [
+                                    {name: 'Calling Name', search: true, datatype: 'text', property: 'student_id.cname'},
+                                    {name: 'Attendance', search: true, datatype: 'text', property: getAttendanceOption},
+                                ];
+
+                                tableForInnerForm("printinnerTable", "tblInnerStuAttendPrint" , metedatainner , false);
+                            </script>
+                        </td>
+                    </tr>
+
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" onclick="btnPrintRowMC()" >Print</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="overlay"></div>
+
+<!-- Settings Modal-->
+<div class="modal fade" id="settingsModal" tabindex="-1" role="dialog"
+     aria-labelledby="settingsModal" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+        <div class="modal-content" id="modalContent">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalTitle"><i
+                        class="fas fa-cog"></i> Settings</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+                <form id="changePasswordForm" onsubmit="return false">
+                    <div class="form-row">
+                        <!-- Username -->
+                        <div class="form-group col-md-12">
+                            <label for="txtUsernameView" class="text-blue">
+                                <b>Username</b>
+                            </label>
+                            <div readonly class="form-control-plaintext"
+                                 id="txtUsernameView"></div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <!-- Current Password -->
+                        <div class="form-group col-md-12">
+                            <label for="txtCurrentPassword"
+                                   class="text-blue"><b>Current Password</b> <i
+                                    class="fas fa-question-circle text-primary ml-1"
+                                    data-toggle="tooltip" data-placement="right"
+                                    title=""></i></label>
+                            <input type="password"
+                                   class="form-control form-control-sm changePasswordFields"
+                                   id="txtCurrentPassword"
+                                   onkeyup="textFieldBinder(txtCurrentPassword, '^[0-9]{5,}$', 'changePassword', 'currentPassword', 'oldChangePassword')">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <!-- New Password -->
+                        <div class="form-group col-md-12">
+                            <label for="txtNewPassword" class="text-blue"><b>New
+                                Password</b><i
+                                    class="fas fa-question-circle text-primary ml-1"
+                                    data-toggle="tooltip" data-placement="right"
+                                    title=""></i></label>
+                            <input type="password"
+                                   class="form-control form-control-sm changePasswordFields"
+                                   id="txtNewPassword"
+                                   onkeyup="passwordFieldBinder(txtNewPassword, txtConfirmPassword, '^[0-9]{5,}$', 'changePassword', '', 'oldChangePassword')">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <!-- Confirm Password -->
+                        <div class="form-group col-md-12">
+                            <label for="txtConfirmPassword"
+                                   class="text-blue"><b>Confirm
+                                Password</b><i
+                                    class="fas fa-question-circle text-primary ml-1"
+                                    data-toggle="tooltip" data-placement="right"
+                                    title=""></i></label>
+                            <input type="password"
+                                   class="form-control form-control-sm changePasswordFields"
+                                   id="txtConfirmPassword"
+                                   onkeyup="passwordFieldBinder(txtNewPassword, txtConfirmPassword, '^[0-9]{5,}$', 'changePassword', 'newPassword', 'oldChangePassword')">
+                        </div>
+                    </div>
+                </form>
+
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="brnClosechnagepasswordmodle" class="btn btn-secondary" data-dismiss="modal">
+                    Close
+                </button>
+                <button type="button" class="btn btn-primary"
+                        onclick="btnSaveChangePasswordMC()">Save changes
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
+

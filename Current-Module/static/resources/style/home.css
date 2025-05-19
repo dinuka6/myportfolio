@@ -1,0 +1,175 @@
+.dashbordbody{
+	margin: 3px 0px 0px 0px;
+	/*background-color: aqua;
+	background:url(../image/homenew.jpg);*/
+	background-repeat: no-repeat;
+	background-size: cover;
+	width: auto;
+	height: auto;
+	/*padding: 10px 10px 10px 10px;*/
+}
+
+.mainwindowbody{
+	margin: -10px 0px 0px 0px;
+	/*background-color: #10134c;*/
+	/*background:url(../image/home.jpg);*/
+	background-repeat: no-repeat;
+	background-size: cover;
+	width: 100%;
+	height: 100%;
+	/*padding: 10px 10px 10px 10px;*/
+}
+
+#calendar{
+	height: 330px;
+}
+
+/*row1*/
+#guardiancart {
+	background-image: url(../image/cart/guardian.png);
+	background-size: cover;
+	width: 100%;
+	height: 100%;
+}
+
+#studentcart {
+	background-image: url(../image/cart/students.png);
+	background-size: cover;
+	width: 100%;
+	height: 100%;
+}
+
+#studentregcart {
+	background-image: url(../image/cart/studentreg.png);
+	background-size: cover;
+	width: 100%;
+	height: 100%;
+}
+
+#studentpaymcart {
+	background-image: url(../image/cart/studentpayment.png);
+	background-size: cover;
+	width: 100%;
+	height: 100%;
+}
+
+/*row1 part2*/
+#yearcart {
+	background-image: url(../image/cart/year.png);
+	background-size: cover;
+	width: 100%;
+	height: 100%;
+}
+
+#eventcart {
+	background-image: url(../image/cart/event.png);
+	background-size: cover;
+	width: 100%;
+	height: 100%;
+}
+
+#classroomcart {
+	background-image: url(../image/cart/classroom.png);
+	background-size: cover;
+	width: 100%;
+	height: 100%;
+}
+
+
+/*row2*/
+#examcart {
+	background-image: url(../image/cart/exam.png);
+	background-size: cover;
+	width: 100%;
+	height: 100%;
+}
+#schoexamcart {
+	background-image: url(../image/cart/schoexam.png);
+	background-size: cover;
+	width: 100%;
+	height: 100%;
+}
+#attendancecart {
+	background-image: url(../image/cart/attandance.png);
+	background-size: cover;
+	width: 100%;
+	height: 100%;
+}
+#resultcart {
+	background-image: url(../image/cart/result.png);
+	background-size: cover;
+	width: 100%;
+	height: 100%;
+}
+#teachercart {
+	background-image: url(../image/cart/teacher.png);
+	background-size: cover;
+	width: 100%;
+	height: 100%;
+}
+
+/*row3*/
+#usercart {
+	background-image: url(../image/cart/user.png);
+	background-size: cover;
+	width: 100%;
+	height: 100%;
+}
+#employeecart {
+	background-image: url(../image/cart/employee.png);
+	background-size: cover;
+	width: 100%;
+	height: 100%;
+}
+#privilcart {
+	background-image: url(../image/cart/privilage.png);
+	background-size: cover;
+	width: 100%;
+	height: 100%;
+}
+
+
+
+#paymentreportcart {
+	background-image: url(../image/cart/report.png);
+	background-size: cover;
+	width: 100%;
+	height: 100%;
+}
+
+#reportcardcart {
+	background-image: url(../image/cart/reportcard.png);
+	background-size: cover;
+	width: 100%;
+	height: 100%;
+}
+
+#reportcardcart2 {
+	background-image: url(../image/cart/reportcard.png);
+	background-size: cover;
+	width: 100%;
+	height: 100%;
+}
+
+
+/*#id_1:hover #id_2{background-color:red;}*/
+
+
+
+body{
+	background:url(../image/home.jpg);
+	background-repeat: no-repeat;
+	background-size: cover;
+	width: 100%;
+	height: 400px;
+}
+
+.navitem {
+	align-content: center;
+	width: auto;
+	height: 80px;
+	background-color: tomato;
+	border-radius: 10px;
+	margin: 5px;
+
+}
